@@ -1,5 +1,5 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+//Documentación
+
 public class Actividad1 {
     public static void main(String [] args){
 
@@ -29,7 +29,7 @@ public class Actividad1 {
         String listaPrimos = "";
         for (int i = 1; i <=numMaximo; i++){
             if (validarPrimo(i)){
-                listaPrimos += i + " ";
+                listaPrimos += i;
             }
         }
 
