@@ -1,4 +1,4 @@
-//Creador de números primos 2
+//Creador de números primos alsjdflkd
 
 public class Actividad1 {
     public static void main(String [] args){
