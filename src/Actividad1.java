@@ -7,7 +7,7 @@ public class Actividad1 {
         String primos = listarPrimos(numMaximo);
         System.out.println("Los primos menores que: " + numMaximo + " son "+ primos );
         
-        //mauricio 
+        //mauricio 3
     }
 
     public static boolean validarPrimo(int num){
