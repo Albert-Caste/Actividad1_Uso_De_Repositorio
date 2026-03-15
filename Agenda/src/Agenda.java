@@ -5,9 +5,12 @@ public class Agenda {
     private String nombre;
     private int id;
 
+
     private List<Grupo> listGrupo;
     private List<Reunion> listAgendaReunion;
     private List<Contacto> listContactos;
+    private List<Grupo> listContactoGrupo;
+
 
     //Metodo constructor
 
@@ -68,6 +71,7 @@ public class Agenda {
             actualizacion += " Este contacto no existe";
 
         }else {
+            actualizacion += "Se actualizó "+ contactoBuscado.getNombre() + " a " + nuevoNombre;
 
             contactoBuscado.setNombre(nuevoNombre);
             contactoBuscado.setAlias(nuevoAlias);
@@ -76,12 +80,84 @@ public class Agenda {
             contactoBuscado.setDireccion(nuevaDireccion);
         }
 
-
-
-
-
         return actualizacion;
     }
+
+    //borrar contacto
+
+    public String borrarContacto(String telefono){
+        Contacto contactoABorrar = buscarContacto(telefono);
+        String mensajeSalida = "El contacto: ";
+        if(contactoABorrar == null){
+            mensajeSalida += "No existe";
+
+        }else {
+            mensajeSalida += contactoABorrar.getNombre() + " Será borrado";
+            listContactos.remove(contactoABorrar);
+        }
+        return mensajeSalida;
+    }
+
+    // Llamar sacar todos los contactos que se llamen juan
+
+    public String sacarListaNombresIguales(String nombre){
+        String contactosIguales = " ";
+            for (Contacto cont:listContactos){
+                if(cont.getNombre().equals(nombre)){
+                    contactosIguales += cont.getNombre() + cont.getAlias();
+                }
+                else {
+                    contactosIguales += "no existen contactos con ese nombre";
+
+                }
+            }
+        return contactosIguales;
+    }
+
+    //Crear grupo
+
+    public String crearGrupo(String nombre, int id){
+        String mensaje = "El grupo";
+        Grupo grupo = new Grupo(nombre,id);
+        listGrupo.add(grupo);
+        mensaje += grupo.getNombre() + "ya se registro";
+        return mensaje;
+    }
+
+    public Grupo buscarGrupo(int id){
+        Grupo grupoBuscado = null;
+        for(Grupo grupo : listGrupo){
+            if (grupo.getId()== id){
+                grupoBuscado = grupo;
+                break;
+            }
+        }
+        return grupoBuscado;
+    }
+
+    public String ingresarContactoAgrupo(String nombreContacto, int idGrupo ){
+        String mensaje =" ";
+
+        Contacto contacto = buscarContacto(nombreContacto);
+        Grupo grupo = buscarGrupo(idGrupo);
+
+        if(listContactoGrupo.size()<=10){
+            grupo.agregarContactoAGrupo(contacto);
+            mensaje += "registrado en grupo " + grupo.getNombre();
+
+        }else {
+            mensaje = "El grupo esta lleno";
+        }
+
+
+
+
+        return mensaje;
+    }
+
+
+
+
 
 
 

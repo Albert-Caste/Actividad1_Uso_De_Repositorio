@@ -8,6 +8,14 @@ public class Grupo {
 
     private List<Contacto> listContactoGrupo;
 
+    //Constructor grupo
+
+    public Grupo(String nombre,int id){
+        this.nombre = nombre;
+        this.id = id;
+        this.listContactoGrupo = new ArrayList<>();
+    }
+
     public List<Contacto> getListContactoGrupo() {
         return listContactoGrupo;
     }
@@ -31,4 +39,15 @@ public class Grupo {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void agregarContactoAGrupo(Contacto contacto){
+        listContactoGrupo.add(contacto);
+    }
+
+
+    public String toString(){
+        return "Lista contactos por grupo" + listContactoGrupo;
+    }
+
+
 }
