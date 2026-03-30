@@ -11,6 +11,10 @@ public class Agenda {
     private List<Contacto> listContactos;
     private List<Grupo> listContactoGrupo;
 
+    Grupo grupo1 = new Grupo("prueba", 0);
+
+
+
 
     //Metodo constructor
 
@@ -104,12 +108,9 @@ public class Agenda {
         String contactosIguales = " ";
             for (Contacto cont:listContactos){
                 if(cont.getNombre().equals(nombre)){
-                    contactosIguales += cont.getNombre() + cont.getAlias();
+                    contactosIguales += cont.getNombre() + cont.getAlias() + "\n";
                 }
-                else {
-                    contactosIguales += "no existen contactos con ese nombre";
 
-                }
             }
         return contactosIguales;
     }
@@ -141,7 +142,7 @@ public class Agenda {
         Contacto contacto = buscarContacto(nombreContacto);
         Grupo grupo = buscarGrupo(idGrupo);
 
-        if(listContactoGrupo.size()<=10){
+        if(grupo1.getListContactoGrupo().size()<=10){
             grupo.agregarContactoAGrupo(contacto);
             mensaje += "registrado en grupo " + grupo.getNombre();
 
@@ -194,5 +195,15 @@ public class Agenda {
         this.listAgendaReunion = new ArrayList<>();
     }
 
-
+    @Override
+    public String toString() {
+        return "Agenda{" +
+                "nombre='" + nombre + '\'' +
+                ", id=" + id +
+                ", listGrupo=" + listGrupo +
+                ", listAgendaReunion=" + listAgendaReunion +
+                ", listContactos=" + listContactos +
+                ", listContactoGrupo=" + listContactoGrupo +
+                '}';
+    }
 }

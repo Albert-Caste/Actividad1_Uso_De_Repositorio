@@ -44,10 +44,20 @@ public class Grupo {
         listContactoGrupo.add(contacto);
     }
 
-
-    public String toString(){
-        return "Lista contactos por grupo" + listContactoGrupo;
+    public String imprimirContactosDeUnGrupo(List<Contacto> listContactoGrupo){
+        String contactos = "";
+            for (Contacto ct : listContactoGrupo){
+                contactos+= ct.getNombre() + " Alias " + ct.getAlias() + "\n";
+            }
+        return contactos;
     }
 
 
+    @Override
+    public String toString() {
+        return "Grupo{" +
+                "listContactoGrupo= tiene " + listContactoGrupo.size() +
+                "contactos: }\n" +
+                imprimirContactosDeUnGrupo(listContactoGrupo);
+    }
 }
